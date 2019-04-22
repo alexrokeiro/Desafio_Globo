@@ -44,6 +44,7 @@ namespace Desafio.Domain.Services.Imp.Task
         {
             var gravacoes = new List<Gravacao>();
 
+            Thread.Sleep(500);
             string[] lines = File.ReadAllLines(path);
             string startTime;
             string endTime;
