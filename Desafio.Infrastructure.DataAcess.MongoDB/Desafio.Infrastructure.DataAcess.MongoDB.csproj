@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Desafio.Domain.Services.Entity\Desafio.Domain.Services.Entity.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Desafio.Infrastructure.DataAcess\Desafio.Infrastructure.DataAcess.csproj" />
   </ItemGroup>
 

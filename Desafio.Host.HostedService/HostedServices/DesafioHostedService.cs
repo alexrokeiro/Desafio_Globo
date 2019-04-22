@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Desafio.Domain.Services.Task;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
@@ -13,11 +14,13 @@ namespace Desafio.Host.HostedService.HostedServices
     {
         public string PastaOrigem { get; }
         public string PastaDestino { get; }
+        private IProcessarArquivoTaskService ProcessarArquivoTaskService { get; }
 
-        public DesafioHostedService(IConfiguration config)
+        public DesafioHostedService(IConfiguration config, IProcessarArquivoTaskService processarArquivoTaskService)
         {
             PastaDestino = config.GetSection("PastaDestino").Value;
             PastaOrigem = config.GetSection("PastaOrigem").Value;
+            ProcessarArquivoTaskService = processarArquivoTaskService;
         }
 
         public void Dispose()
@@ -37,8 +40,7 @@ namespace Desafio.Host.HostedService.HostedServices
 
         private void FileSystemWatcher_Created(object sender, FileSystemEventArgs e)
         {
-            
-            string x = "criado";
+            ProcessarArquivoTaskService.ProcessarArquivo(e.FullPath);
         }
 
         public Task StopAsync(CancellationToken cancellationToken)

@@ -5,6 +5,6 @@ namespace Desafio.Domain.Services.Entity
 {
     public interface IGravacaoEntityService
     {
-        void Novo(Gravacao model);
+        Gravacao Novo(string StartTime, string EndTime, string Title, string Duration, long ReconcileKey);
     }
 }
